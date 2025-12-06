@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <a href="home.html">Home</a>
+    <a href="faq.html">FAQs</a>
+    <a href="register.html">Registration</a>
+    <a href="admin.html">Admin</a>
+</nav>
+
+<div class="container">
+    <h1>Registered Participants</h1>
+
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr><th>Name</th><th>Email</th><th>Phone</th></tr>
+        </thead>
+        <tbody id="data"></tbody>
+    </table>
+</div>
+
+<script>
+let users = JSON.parse(localStorage.getItem("participants")) || [];
+
+let tbody = document.getElementById("data");
+
+users.forEach(user => {
+    let row = `
+        <tr>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+            <td>${user.phone || ""}</td>
+        </tr>
+    `;
+    tbody.innerHTML += row;
+});
+</script>
+
+</body>
+</html>

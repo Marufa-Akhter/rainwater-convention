@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - Rainwater Convention</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <a href="home.html">Home</a>
+    <a href="faq.html">FAQs</a>
+    <a href="register.html">Registration</a>
+    <a href="admin.html">Admin</a>
+</nav>
+
+<div class="container">
+    <h1>Event Registration</h1>
+
+    <form onsubmit="return registerUser()">
+
+        <label>Name *</label><br>
+        <input type="text" id="name"><br><br>
+
+        <label>Email *</label><br>
+        <input type="email" id="email"><br><br>
+
+        <label>Phone</label><br>
+        <input type="text" id="phone"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="msg"></p>
+</div>
+
+<script>
+function registerUser() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+
+    if (!name || !email) {
+        alert("Name and Email are required!");
+        return false;
+    }
+
+    let users = JSON.parse(localStorage.getItem("participants")) || [];
+
+    users.push({ name, email, phone });
+
+    localStorage.setItem("participants", JSON.stringify(users));
+
+    document.getElementById("msg").innerHTML =
+        "<p style='color:green;'>Registration successful!</p>";
+
+    return false; 
+}
+</script>
+
+</body>
+</html>
