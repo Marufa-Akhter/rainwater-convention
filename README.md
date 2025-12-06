@@ -62,7 +62,8 @@ Displays them in a table
 
 No login required (basic admin view)
 
-⚙️ How to Run the Website Locally
+⚙️ How to Run the Website Locally  
+
 🔹 Option 1: Open directly
 
 Just double-click on home.html
